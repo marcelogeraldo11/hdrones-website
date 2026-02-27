@@ -13,13 +13,15 @@ export const es: TranslationKeys = {
   // Navigation
   nav: {
     home: 'Inicio',
-    about: 'Acerca de',
+    about: 'Sobre Nosotros',
     blog: 'Blog',
     contact: 'Contacto',
     features: 'Características',
     components: 'Componentes',
     docs: 'Documentación',
     getStarted: 'Comenzar',
+    consultancy: 'Asesoría',
+    courses: 'Cursos',
   },
 
   // Common
@@ -154,9 +156,8 @@ export const es: TranslationKeys = {
     command: 'npm create velocity@latest',
   },
 
-  // Footer
   footer: {
-    copyright: '© {year} Velocity. Todos los derechos reservados.',
+    copyright: '© {year} {siteName}. Todos los derechos reservados.',
     madeWith: 'Hecho con',
     maintainedBy: 'Mantenido por',
     links: {
@@ -164,6 +165,21 @@ export const es: TranslationKeys = {
       github: 'GitHub',
       twitter: 'Twitter',
       license: 'Licencia',
+    },
+    quickLinks: {
+      title: 'Enlaces Rápidos',
+      about: 'Quiénes Somos',
+      courses: 'Cursos de Drones',
+      consultancy: 'Asesorías en Drones',
+      blog: 'Blog de Drones',
+      terms: 'Términos y Condiciones',
+    },
+    contact: {
+      title: 'Contacto',
+      address: 'Centro de Entrenamiento de Drones.',
+      phone: '+569 9467 7613',
+      email: 'info@academiadronchile.cl',
+      hours: 'Lun a Sáb 09:00 a 18:00 hrs',
     },
   },
 
@@ -207,48 +223,60 @@ export const es: TranslationKeys = {
     },
   },
 
+  // Consultancy page
+  consultancy: {
+    meta: {
+      title: 'Asesoría en Drones Chile - Certificación AOC/CEO',
+      description: 'Líderes en asesorías para certificaciones AOC, CEO y ROC en Chile. Cumplimiento normativo DAN 151, 91, 119 y 137.',
+    },
+  },
+
   // Contact page
   contact: {
     meta: {
       title: 'Contáctanos',
-      description: 'Ponte en contacto con el equipo de Velocity.',
-    },
-    hero: {
-      badge: 'Ponte en Contacto',
-      title: 'Vamos a',
-      titleHighlight: 'conectar.',
-      description: '¿Tienes una pregunta, sugerencia o simplemente quieres saludar? Nos encantaría saber de ti.',
-    },
-    form: {
-      title: 'Envíanos un mensaje',
-      name: 'Tu Nombre',
-      namePlaceholder: 'Juan Pérez',
-      email: 'Correo Electrónico',
-      emailPlaceholder: 'juan@ejemplo.com',
-      subject: 'Asunto',
-      subjectPlaceholder: '¿Cómo podemos ayudarte?',
-      message: 'Mensaje',
-      messagePlaceholder: 'Cuéntanos más sobre tu proyecto o pregunta...',
-      submit: 'Enviar Mensaje',
-      sending: 'Enviando...',
-      success: '¡Mensaje enviado con éxito! Te responderemos pronto.',
-      error: 'Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.',
+      description: 'Ponte en contacto con el equipo de HDRONES®.',
     },
     info: {
       title: 'Otras formas de contactarnos',
       email: {
-        label: 'Correo',
-        value: 'hola@velocity.dev',
+        label: 'Email',
+        value: 'info@academiadronchile.cl',
       },
-      github: {
-        label: 'GitHub',
-        value: 'github.com/velocity',
+      phone: {
+        label: 'Teléfono',
+        value: '+569 9467 7613',
       },
-      twitter: {
-        label: 'Twitter',
-        value: '@velocity_dev',
+      center: {
+        label: 'Centro de Entrenamiento',
+        value: 'Camino Los Corrales s/n, Parcelacion El Porvenir 21, Padre Hurtado, Región Metropolitana',
+      },
+      hours: {
+        label: 'Horario Atención',
+        value: 'Lun a Sáb 09:00 a 18:00 hrs',
       },
     },
+    sidebar: {
+      title: 'Más de 9 años capacitando en el uso de DRONES en CHILE',
+      subtitle: 'Facilitamos los drones sin costo. Cursos certificados por la DGAC',
+      description: 'HDRONES® Empresa Aérea de Capacitación especializada en drones, somos líderes en formación de operadores de RPAS en la industria.',
+      highlights: [
+        'Seguridad y confianza en vuelo de drones',
+        'Entrenamiento en el uso de drones',
+        'Teoría y conocimiento en drones'
+      ]
+    },
+    form: {
+      title: 'Escríbenos',
+      name: 'Nombre y Apellido*',
+      email: 'Email*',
+      phone: 'Teléfono*',
+      region: 'Región*',
+      course: 'Selecciona el curso de tu interés',
+      message: 'Su Mensaje*',
+      captcha: 'No soy un robot',
+      submit: 'Enviar',
+    }
   },
 
   // Forms

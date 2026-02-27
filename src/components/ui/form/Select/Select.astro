@@ -15,7 +15,7 @@ interface Props extends HTMLAttributes<'select'> {
   error?: string;
   hint?: string;
   size?: 'sm' | 'md' | 'lg';
-  options: Option[];
+  options?: Option[];
   placeholder?: string;
 }
 
@@ -57,11 +57,12 @@ const selectStyles = cn(
       {...attrs}
     >
       {placeholder && <option value="" disabled selected>{placeholder}</option>}
-      {options.map((option) => (
+      {options && options.map((option) => (
         <option value={option.value} disabled={option.disabled}>
           {option.label}
         </option>
       ))}
+      <slot />
     </select>
 
     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">

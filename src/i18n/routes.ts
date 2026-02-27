@@ -47,30 +47,42 @@ export type RouteDefinition = Record<Locale, string> & {
 export const routes = {
   // Home page (root) - not shown in nav (logo links there)
   home: {
-    en: '', es: '', fr: '',
+    en: '', es: '',
     nav: { show: false, order: 0, label: 'nav.home' },
   },
 
   // Static pages
   about: {
-    en: 'about', es: 'sobre-nosotros', fr: 'a-propos',
+    en: 'about', es: 'sobre-nosotros',
     nav: { show: true, order: 3, label: 'nav.about' },
   },
   contact: {
-    en: 'contact', es: 'contacto', fr: 'contact',
+    en: 'contact', es: 'contacto',
     nav: { show: true, order: 4, label: 'nav.contact' },
+  },
+
+  // Courses section
+  courses: {
+    en: 'courses', es: 'cursos',
+    nav: { show: true, order: 1, label: 'nav.courses' },
   },
 
   // Blog section
   blog: {
-    en: 'blog', es: 'blog', fr: 'blogue',
-    nav: { show: true, order: 2, label: 'nav.blog' },
+    en: 'blog', es: 'blog',
+    nav: { show: true, order: 3, label: 'nav.blog' },
   },
 
   // Components showcase
   components: {
-    en: 'components', es: 'componentes', fr: 'composants',
-    nav: { show: true, order: 1, label: 'nav.components' },
+    en: 'components', es: 'componentes',
+    nav: { show: false, order: 6, label: 'nav.components' },
+  },
+
+  // Consultancy page
+  consultancy: {
+    en: 'consultancy', es: 'asesoria-en-drones',
+    nav: { show: true, order: 2, label: 'nav.consultancy' },
   },
 } as const satisfies Record<string, RouteDefinition>;
 
@@ -92,4 +104,3 @@ export function isValidRouteId(id: string): id is RouteId {
 }
 
 // Export types
-export type { NavConfig };

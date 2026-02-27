@@ -1,0 +1,122 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import StatCard from '@/components/patterns/StatCard.astro';
+
+const locale = 'es';
+---
+
+<PageLayout
+  title="Sobre Nosotros | HDRONES® Academia de Drones de Chile"
+  description="Conoce a HDRONES®, líderes en formación y entrenamiento de pilotos de drones en Chile con más de 9 años de experiencia."
+  lang={locale}
+  routeId="about"
+>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-background-secondary border-b border-border py-20 md:py-32">
+    <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+    <div class="relative container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="font-display text-4xl font-bold tracking-tight text-foreground md:text-6xl mb-6">
+          HDRONES® <span class="text-brand-600">Academia de Drones de Chile</span>
+        </h1>
+        <p class="text-xl text-foreground-muted leading-relaxed mb-8">
+          Somos un equipo de instructores multidisciplinarios que lideramos en el rubro de formación y entrenamiento de RPAS (Drones) a nivel nacional con más de 9 años de experiencia.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <Button variant="primary" size="xl" href="#servicios">
+            Conocer Cursos
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Values -->
+  <section class="py-24 bg-background">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Capacitando con los más altos estándares</h2>
+          <p class="text-lg text-foreground-muted mb-6">
+            Satisfacemos las necesidades de nuestros clientes con los más altos estándares tecnológicos. También entregamos asesoría aeronáutica en drones con soluciones innovadoras y acorde a la normativa chilena, contribuyendo al éxito de sus proyectos.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="mt-1 w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center text-brand-600">
+                <Icon name="check" size="xs" />
+              </div>
+              <p class="font-medium">Certificación oficial DGAC</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="mt-1 w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center text-brand-600">
+                <Icon name="check" size="xs" />
+              </div>
+              <p class="font-medium">Equipos profesionales sin costo adicional</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="mt-1 w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center text-brand-600">
+                <Icon name="check" size="xs" />
+              </div>
+              <p class="font-medium">Entorno de formación adecuado</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-video rounded-2xl bg-muted overflow-hidden shadow-2xl">
+             <div class="absolute inset-0 flex items-center justify-center bg-brand-600/10">
+                <Icon name="play" size="xl" class="text-brand-600" />
+             </div>
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-brand-600 text-white p-6 rounded-xl shadow-xl hidden md:block">
+            <p class="text-3xl font-bold">10.000+</p>
+            <p class="text-sm opacity-90">Operadores capacitados</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Grid -->
+  <section class="py-24 bg-background-secondary border-y border-border">
+    <div class="container mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold mb-4">¡DEJAMOS LO CONVENCIONAL ATRÁS!</h2>
+        <p class="text-foreground-muted">Nuestro innovador modelo ha sido mencionado en medios de comunicación a nivel nacional.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <StatCard 
+          label="Experiencia" 
+          value="9+ Años"
+          description="Profesorado experto con años de experiencia en la formación de Pilotos."
+        />
+        <StatCard 
+          label="Metodología" 
+          value="Propia"
+          description="Garantiza la máxima calidad a nuestros aspirantes a pilotos de RPAS."
+        />
+        <StatCard 
+          label="Calidad" 
+          value="Premium"
+          description="Contamos con la última tecnología y las herramientas necesarias."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-24 bg-brand-600 text-white">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">¿Estás listo para ser un Operador de Drones Certificado?</h2>
+      <p class="text-xl opacity-90 mb-10 max-w-2xl mx-auto">
+        ¡Únete a nuestros cursos y especialízate en el uso de drones con nosotros!
+      </p>
+      <Button variant="outline" size="xl" class="bg-white text-brand-600 hover:bg-brand-50 border-none" href="#">
+        Conocer Cursos
+      </Button>
+    </div>
+  </section>
+
+</PageLayout>

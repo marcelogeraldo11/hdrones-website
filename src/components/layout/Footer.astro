@@ -250,7 +250,10 @@ const displayTagline = tagline || t('site.description');
               ) : (
                 <a href={getLocalizedPath('home', locale)} class="flex items-center gap-2">
                   <Logo size="sm" />
-                  <span class="font-display text-lg font-bold text-brand-500">
+                  <span class={cn(
+                    'font-display text-lg font-bold',
+                    background === 'invert' ? 'text-white' : 'text-brand-500'
+                  )}>
                     {siteConfig.name}
                   </span>
                 </a>
@@ -291,35 +294,115 @@ const displayTagline = tagline || t('site.description');
           {hasColumnsSlot ? (
             <slot name="columns" />
           ) : (
-            linkGroups.map((group) => (
-              <div class="space-y-4">
-                <h3 class={cn(
-                  'font-semibold text-sm',
-                  background === 'invert' ? 'text-on-invert' : 'text-foreground'
-                )}>
-                  {group.title}
-                </h3>
-                <ul class="space-y-2">
-                  {group.links.map((link) => (
-                    <li>
-                      <a
-                        href={link.href}
-                        class={cn(
-                          'text-sm transition-colors',
-                          background === 'invert'
-                            ? 'text-on-invert/70 hover:text-on-invert'
-                            : 'text-foreground-muted hover:text-foreground'
-                        )}
-                        target={link.external || link.href.startsWith('http') ? '_blank' : undefined}
-                        rel={link.external || link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))
+            <Fragment>
+              {linkGroups.length > 0 ? (
+                linkGroups.map((group) => (
+                  <div class="space-y-4">
+                    <h3 class={cn(
+                      'font-semibold text-sm uppercase tracking-wider',
+                      background === 'invert' ? 'text-on-invert' : 'text-foreground'
+                    )}>
+                      {group.title}
+                    </h3>
+                    <ul class="space-y-2">
+                      {group.links.map((link) => (
+                        <li>
+                          <a
+                            href={link.href}
+                            class={cn(
+                              'text-sm transition-colors flex items-center gap-2 group',
+                              background === 'invert'
+                                ? 'text-on-invert/70 hover:text-on-invert'
+                                : 'text-foreground-muted hover:text-foreground'
+                            )}
+                            target={link.external || link.href.startsWith('http') ? '_blank' : undefined}
+                            rel={link.external || link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                          >
+                            <Icon name="chevron-right" size="xs" class="opacity-40 group-hover:opacity-100 transition-opacity" />
+                            {link.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))
+              ) : (
+                <Fragment>
+                  {/* Default Translated Link Groups */}
+                  <div class="space-y-6">
+                    <h3 class={cn(
+                      'font-display text-lg font-bold uppercase tracking-wider',
+                      background === 'invert' ? 'text-on-invert' : 'text-foreground'
+                    )}>
+                      {t('footer.quickLinks.title')}
+                    </h3>
+                    <ul class="space-y-4">
+                      <li>
+                        <a href={getLocalizedPath('home', locale)} class="flex items-center gap-2 group opacity-80 hover:opacity-100 transition-opacity">
+                          <Icon name="chevron-right" size="xs" class="opacity-40 group-hover:opacity-100 transition-opacity" />
+                          <span>{t('nav.home')}</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href={getLocalizedPath('about', locale)} class="flex items-center gap-2 group opacity-80 hover:opacity-100 transition-opacity">
+                          <Icon name="chevron-right" size="xs" class="opacity-40 group-hover:opacity-100 transition-opacity" />
+                          <span>{t('footer.quickLinks.about')}</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href={getLocalizedPath('courses', locale)} class="flex items-center gap-2 group opacity-80 hover:opacity-100 transition-opacity">
+                          <Icon name="chevron-right" size="xs" class="opacity-40 group-hover:opacity-100 transition-opacity" />
+                          <span>{t('nav.courses')}</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href={getLocalizedPath('consultancy', locale)} class="flex items-center gap-2 group opacity-80 hover:opacity-100 transition-opacity">
+                          <Icon name="chevron-right" size="xs" class="opacity-40 group-hover:opacity-100 transition-opacity" />
+                          <span>{t('footer.quickLinks.consultancy')}</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href={getLocalizedPath('blog', locale)} class="flex items-center gap-2 group opacity-80 hover:opacity-100 transition-opacity">
+                          <Icon name="chevron-right" size="xs" class="opacity-40 group-hover:opacity-100 transition-opacity" />
+                          <span>{t('footer.quickLinks.blog')}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="space-y-6">
+                    <h3 class={cn(
+                      'font-display text-lg font-bold uppercase tracking-wider',
+                      background === 'invert' ? 'text-on-invert' : 'text-foreground'
+                    )}>
+                      {t('footer.contact.title')}
+                    </h3>
+                    <ul class="space-y-4">
+                      <li class="flex items-start gap-3 opacity-80">
+                        <Icon name="map-pin" size="sm" class="mt-1 opacity-60" />
+                        <span class="text-sm">{t('footer.contact.address')}</span>
+                      </li>
+                      <li class="flex items-center gap-3 opacity-80">
+                        <Icon name="phone" size="sm" class="opacity-60" />
+                        <a href={`tel:${t('footer.contact.phone').replace(/\s/g, '')}`} class="text-sm hover:underline">
+                          {t('footer.contact.phone')}
+                        </a>
+                      </li>
+                      <li class="flex items-center gap-3 opacity-80">
+                        <Icon name="mail" size="sm" class="opacity-60" />
+                        <a href={`mailto:${t('footer.contact.email')}`} class="text-sm hover:underline">
+                          {t('footer.contact.email')}
+                        </a>
+                      </li>
+                      <li class="flex items-center gap-3 opacity-80">
+                        <Icon name="clock" size="sm" class="opacity-60" />
+                        <span class="text-sm">{t('footer.contact.hours')}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </Fragment>
+              )}
+            </Fragment>
           )}
         </div>
 
@@ -387,7 +470,10 @@ const displayTagline = tagline || t('site.description');
           ) : (
             <a href={getLocalizedPath('home', locale)} class="flex items-center gap-2">
               <Logo size="md" />
-              <span class="font-display text-xl font-bold text-brand-500">
+              <span class={cn(
+                'font-display text-xl font-bold',
+                background === 'invert' ? 'text-white' : 'text-brand-500'
+              )}>
                 {siteConfig.name}
               </span>
             </a>

@@ -1,55 +1,51 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
 import { getCollection } from 'astro:content';
+import { useTranslations } from '@/i18n';
+import BlogCard from '@/components/blog/BlogCard.astro';
 
-const posts = await getCollection('blog', ({ data }) => !data.draft);
+const lang = 'es';
+const t = useTranslations(lang);
+
+const posts = await getCollection('blog', ({ data }) => {
+  return (import.meta.env.PROD ? !data.draft : true) && data.locale === lang;
+});
 const sortedPosts = posts.sort(
-  (a, b) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime()
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
 );
+
+const getPostUrl = (postId: string) => {
+  // Remove locale prefix from id (e.g., "es/articulo-1" -> "articulo-1")
+  const slug = postId.replace(`${lang}/`, '');
+  return `/blog/${slug}`;
+};
 ---
 
 <PageLayout
-  title="Blog"
-  description="Read our latest articles and updates."
+  title={t('blog.title')}
+  description={t('blog.description')}
+  lang={lang}
 >
   <section class="py-16 md:py-24">
     <div class="container mx-auto px-4">
-      <h1 class="text-3xl font-bold tracking-tight sm:text-4xl mb-8">Blog</h1>
+      <h1 class="text-3xl font-bold tracking-tight sm:text-4xl mb-8">{t('blog.title')}</h1>
 
       {sortedPosts.length === 0 ? (
         <div class="text-center py-12">
-          <p class="text-muted-foreground">No posts yet. Create your first post in</p>
-          <code class="bg-muted px-2 py-1 rounded text-sm mt-2 inline-block">
-            src/content/blog/
-          </code>
+          <p class="text-muted-foreground">{t('blog.noPosts')}</p>
         </div>
       ) : (
-        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div class="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {sortedPosts.map((post) => (
-            <article class="group">
-              <a href={`/blog/${post.id}`} class="block">
-                {post.data.image && (
-                  <img
-                    src={post.data.image}
-                    alt={post.data.title}
-                    class="aspect-video w-full rounded-lg object-cover mb-4"
-                  />
-                )}
-                <h2 class="text-xl font-semibold group-hover:text-primary transition-colors">
-                  {post.data.title}
-                </h2>
-                <p class="mt-2 text-muted-foreground line-clamp-2">
-                  {post.data.description}
-                </p>
-                <time class="mt-2 text-sm text-muted-foreground block">
-                  {new Date(post.data.publishedAt).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </time>
-              </a>
-            </article>
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              href={getPostUrl(post.id)}
+              publishedAt={post.data.publishedAt}
+              tags={post.data.tags}
+              author={post.data.author}
+              image={post.data.image}
+            />
           ))}
         </div>
       )}

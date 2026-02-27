@@ -28,6 +28,8 @@ export const buttonVariants = cva(
         sm: 'h-8 px-3 text-xs [&_svg]:h-4 [&_svg]:w-4',
         md: 'h-10 px-4 text-sm [&_svg]:h-5 [&_svg]:w-5',
         lg: 'h-12 px-5 text-base [&_svg]:h-5 [&_svg]:w-5',
+        xl: 'h-14 px-8 text-lg [&_svg]:h-6 [&_svg]:w-6 font-bold',
+        '2xl': 'h-16 px-10 text-xl [&_svg]:h-7 [&_svg]:w-7 font-black',
       },
       fullWidth: {
         true: 'w-full',

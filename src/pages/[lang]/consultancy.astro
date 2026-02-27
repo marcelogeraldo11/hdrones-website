@@ -1,0 +1,169 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import StatCard from '@/components/patterns/StatCard.astro';
+import { getLocalizedPath, type Locale } from '@/i18n/index';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } }
+  ];
+}
+
+const { lang } = Astro.params;
+
+const title = "Drone Consultancy Chile - AOC/CEO Certification";
+const description = "Leading drone consultancy in Chile for AOC, CEO, and ROC certifications. Compliance with DAN 151, 91, 119, and 137 regulations.";
+---
+
+<PageLayout title={title} description={description} lang={lang as Locale} routeId="consultancy">
+
+    <!-- Hero Section -->
+    <section class="invert-section min-h-[80vh] flex items-center relative overflow-hidden bg-background py-20">
+      <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 h-96 w-full max-w-4xl rounded-full bg-brand-500/20 blur-[128px] pointer-events-none"></div>
+
+      <div class="container relative z-10 text-center animate-fade-in">
+        <div class="inline-flex items-center gap-2 px-3 py-1 text-sm font-medium rounded-full bg-brand-500/10 text-brand-600 border border-brand-500/20 mb-8 animate-slide-up">
+          <Icon name="shield" size="xs" />
+          <span class="tracking-wide">AOC - CEO Certification!</span>
+        </div>
+        <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 animate-slide-up delay-1">
+          Professional <br />
+          <span class="text-brand-600">Drone</span> Consultancy
+        </h1>
+        <p class="text-xl md:text-2xl text-foreground-secondary max-w-3xl mx-auto mb-12 animate-slide-up delay-2 leading-relaxed">
+          Leaders in training and regulatory compliance for aerial companies in Chile with innovative solutions.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 animate-slide-up delay-3">
+          <Button variant="primary" size="xl" href="#services" class="min-w-[200px]">
+            Request Consultation
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+          <Button variant="outline" size="xl" href="#intro" class="min-w-[200px]">
+            View Regulations
+          </Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section id="intro" class="py-32 bg-background border-b border-border">
+      <div class="container">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+          <div class="animate-fade-in delay-2">
+            <h2 class="font-display text-4xl md:text-5xl font-bold mb-8 leading-tight">DGAC Regulations <br /><span class="text-brand-600">2025 Edition</span></h2>
+            <div class="prose lg:prose-lg max-w-none">
+              <p>
+                At Hdrones®, we guide private companies, state public bodies, and municipalities toward <strong>AOC, CEO, and ROC</strong> certifications for professional aerial work.
+              </p>
+              <p>
+                We strictly comply with Chile's 2025 drone regulations (<strong>DAN 151 Ed. 3</strong>), ensuring your operations are legal, safe, and efficient.
+              </p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 gap-6 mt-12">
+              <Card variant="outline" class="p-6 hover-lift">
+                <Icon name="check" size="sm" class="text-brand-600 mb-4" />
+                <h4 class="font-bold mb-2 text-foreground">DAN 151 Ed. 3</h4>
+                <p class="text-sm text-foreground-muted">Operations in populated areas with mandatory parachute.</p>
+              </Card>
+              <Card variant="outline" class="p-6 hover-lift">
+                <Icon name="check" size="sm" class="text-brand-600 mb-4" />
+                <h4 class="font-bold mb-2 text-foreground">DAN 91</h4>
+                <p class="text-sm text-foreground-muted">Commercial flights in non-populated areas.</p>
+              </Card>
+            </div>
+          </div>
+          
+          <div class="relative animate-fade-in delay-3">
+            <div class="absolute -inset-4 bg-brand-500/5 blur-3xl rounded-3xl"></div>
+            <div class="relative bg-background-secondary border border-border rounded-3xl p-8 lg:p-12 shadow-xl overflow-hidden">
+               <div class="absolute top-0 right-0 w-32 h-32 bg-brand-500/10 blur-3xl"></div>
+               <h3 class="font-display text-2xl font-bold mb-8 text-foreground">Our Track Record</h3>
+               <div class="space-y-8">
+                 <StatCard value="+58" label="Certified Companies" trend="up" trendText="Leading the market" />
+                 <StatCard value="100%" label="Legal Compliance" trend="up" trendText="Zero DGAC sanctions" />
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-32 bg-background-secondary relative overflow-hidden">
+      <div class="absolute inset-0 bg-dots opacity-50 pointer-events-none"></div>
+      <div class="container relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-20 animate-fade-in">
+          <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">Consultancy <span class="text-brand-600">Services</span></h2>
+          <p class="text-lg text-foreground-secondary italic">
+            "We transform regulation into a competitive advantage for your aerial operation."
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <Card variant="outline" class="h-full bg-background p-8 hover-lift animate-slide-up delay-1">
+            <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-600 flex items-center justify-center mb-8">
+              <Icon name="file-text" size="md" />
+            </div>
+            <h3 class="font-display text-xl font-bold mb-4">ROC Certification</h3>
+            <p class="text-foreground-secondary text-sm leading-relaxed">
+              Complies with DAN 119 for commercial operations, including BVLOS flights in non-populated areas.
+            </p>
+          </Card>
+
+          <Card variant="outline" class="h-full bg-background p-8 hover-lift animate-slide-up delay-2">
+            <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-600 flex items-center justify-center mb-8">
+              <Icon name="users" size="md" />
+            </div>
+            <h3 class="font-display text-xl font-bold mb-4">CEO Certification</h3>
+            <p class="text-foreground-secondary text-sm leading-relaxed">
+              Specialized projects for municipalities and state public organizations.
+            </p>
+          </Card>
+
+          <Card variant="outline" class="h-full bg-background p-8 hover-lift animate-slide-up delay-3">
+            <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-600 flex items-center justify-center mb-8">
+              <Icon name="layers" size="md" />
+            </div>
+            <h3 class="font-display text-xl font-bold mb-4">AOC Support</h3>
+            <p class="text-foreground-secondary text-sm leading-relaxed">
+              Full support in the DGAC process for both populated and non-populated areas.
+            </p>
+          </Card>
+
+          <Card variant="outline" class="h-full bg-background p-8 hover-lift animate-slide-up delay-4">
+            <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-600 flex items-center justify-center mb-8">
+              <Icon name="lock" size="md" />
+            </div>
+            <h3 class="font-display text-xl font-bold mb-4">Risk & Safety</h3>
+            <p class="text-foreground-secondary text-sm leading-relaxed">
+              Privacy protocols, risk matrices, and specialized emergency plans.
+            </p>
+          </Card>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="invert-section py-24 relative overflow-hidden bg-background">
+      <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+      <div class="container relative z-10 text-center animate-fade-in">
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-8">Ready to elevate your operations?</h2>
+        <p class="text-xl text-foreground-secondary mb-12 max-w-2xl mx-auto">
+          Don't leave legality to chance. Ensure the success of your projects with expert aviation regulatory advice.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <Button variant="primary" size="xl" href={getLocalizedPath('contact', lang as Locale)} class="min-w-[220px]">
+            Contact us now
+          </Button>
+          <Button variant="outline" size="xl" href="https://academiadronchile.cl" class="min-w-[220px]">
+            Learn more
+          </Button>
+        </div>
+      </div>
+    </section>
+</PageLayout>

@@ -17,6 +17,7 @@ interface Props {
   trendText?: string;
   /** Icon name from the Icon component */
   icon?: string;
+  description?: string;
   class?: string;
 }
 
@@ -26,6 +27,7 @@ const {
   trend,
   trendText,
   icon,
+  description,
   class: className,
 } = Astro.props;
 
@@ -53,6 +55,7 @@ const trendIcons = {
           <span>{trendText}</span>
         </div>
       )}
+      {description && <p class="text-xs text-foreground-muted mt-2">{description}</p>}
     </div>
     {icon && (
       <div class="p-2.5 rounded-lg bg-secondary text-foreground-muted">

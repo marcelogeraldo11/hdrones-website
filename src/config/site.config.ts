@@ -49,20 +49,20 @@ export interface SiteConfig {
 }
 
 const siteConfig: SiteConfig = {
-  name: 'Velocity',
-  description: 'A modern website built with Astro and Tailwind CSS',
+  name: 'HDRONES',
+  description: 'Academia de Drones de Chile',
   url: SITE_URL || 'https://example.com',
   ogImage: '/og-default.png',
   author: 'Southwell Media',
   // Demo contact info - replace with your actual business details
-  email: 'hello@example.com',
-  phone: '+1 (555) 123-4567',
+  email: 'info@academiadronchile.cl',
+  phone: '+569 9467 7613',
   address: {
-    street: '123 Main St',
-    city: 'Dallas',
-    state: 'TX',
-    zip: '75001',
-    country: 'US',
+    street: 'Centro de Entrenamiento de Drones.',
+    city: 'Santiago',
+    state: 'RM',
+    zip: '8320000',
+    country: 'Chile',
   },
   socialLinks: [
     'https://github.com/southwellmedia',
@@ -80,13 +80,13 @@ const siteConfig: SiteConfig = {
   // Replace the SVG files there with your own branding
   branding: {
     logo: {
-      alt: 'Velocity',
+      alt: 'HDRONES Academia de Drones de Chile',
     },
     favicon: {
       svg: '/favicon.svg',
     },
     colors: {
-      themeColor: '#F94C10',
+      themeColor: '#00B5E2',
       backgroundColor: '#ffffff',
     },
   },

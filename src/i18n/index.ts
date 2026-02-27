@@ -6,23 +6,21 @@
 import { type Locale, defaultLocale, locales } from './config';
 import { en } from './translations/en';
 import { es } from './translations/es';
-import { fr } from './translations/fr';
 
 // Translation map
 const translations = {
   en,
   es,
-  fr,
 } as const;
 
 type NestedKeyOf<T> = T extends object
   ? {
-      [K in keyof T]: K extends string
-        ? T[K] extends object
-          ? `${K}.${NestedKeyOf<T[K]>}`
-          : K
-        : never;
-    }[keyof T]
+    [K in keyof T]: K extends string
+    ? T[K] extends object
+    ? `${K}.${NestedKeyOf<T[K]>}`
+    : K
+    : never;
+  }[keyof T]
   : never;
 
 export type TranslationKey = NestedKeyOf<typeof en>;
@@ -30,7 +28,7 @@ export type TranslationKey = NestedKeyOf<typeof en>;
 /**
  * Get a nested value from an object using dot notation
  */
-function getNestedValue(obj: Record<string, unknown>, path: string): string {
+function getNestedValue(obj: Record<string, unknown>, path: string): any {
   const keys = path.split('.');
   let result: unknown = obj;
 
@@ -42,7 +40,7 @@ function getNestedValue(obj: Record<string, unknown>, path: string): string {
     }
   }
 
-  return typeof result === 'string' ? result : path;
+  return (typeof result === 'string' || Array.isArray(result)) ? (result as any) : path;
 }
 
 /**
@@ -52,12 +50,12 @@ export function t(
   key: TranslationKey,
   locale: Locale = defaultLocale,
   params?: Record<string, string | number>
-): string {
+): any {
   const translation = translations[locale] || translations[defaultLocale];
   let text = getNestedValue(translation as unknown as Record<string, unknown>, key);
 
   // Replace parameters like {year}, {name}
-  if (params) {
+  if (params && typeof text === 'string') {
     Object.entries(params).forEach(([param, value]) => {
       text = text.replace(new RegExp(`\\{${param}\\}`, 'g'), String(value));
     });

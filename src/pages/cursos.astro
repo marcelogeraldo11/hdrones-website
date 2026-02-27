@@ -1,0 +1,161 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import { getLocalizedPath } from '@/i18n/index';
+
+const lang = 'es';
+
+const courses = [
+  {
+    title: "PACK NOCTURNO: CURSO PARA OBTENER LA CREDENCIAL DE LA DGAC + APRENDER A VOLAR DRONES + CERTIFICACIÓN EN VUELO NOCTURNO (VNOC)",
+    date: "6 de marzo de 2026",
+    slots: "3 Cupos Disponibles",
+    image: "/images/drone-training.png",
+    tag: "06 Mar"
+  },
+  {
+    title: "CURSO PARA OBTENER LA CREDENCIAL DE LA DGAC + APRENDER A VOLAR DRONES",
+    date: "5 de marzo de 2026",
+    slots: "3 Cupos Disponibles",
+    image: "/images/drone-training.png",
+    tag: "05 Mar",
+    offer: true
+  },
+  {
+    title: "¡SUPER PACK! CURSO PARA OBTENER LA CREDENCIAL DE LA DGAC + APRENDER A VOLAR DRONES + CERTIFICACIÓN EN VUELO NOCTURNO (VNOC) + FOTOGRAMETRÍA",
+    date: "6 de marzo de 2026",
+    slots: "Cupos Disponibles",
+    image: "/images/drone-training.png",
+    tag: "06 Mar"
+  },
+  {
+    title: "CURSO PARA OBTENER LA CREDENCIAL DE LA DGAC + APRENDER A VOLAR DRONES",
+    date: "6 de marzo de 2026",
+    slots: "2 Cupos Disponibles",
+    image: "/images/drone-training.png",
+    tag: "06 Mar"
+  },
+  {
+    title: "CURSO APRENDER A VOLAR DRONES",
+    date: "5 de marzo de 2026",
+    slots: "3 Cupos Disponibles",
+    image: "/images/drone-training.png",
+    tag: "05 Mar",
+    offer: true
+  },
+  {
+    title: "CURSO FOTOGRAMETRÍA CON DRONES",
+    date: "6 de marzo de 2026",
+    slots: "2 Cupos Disponibles",
+    image: "/images/drone-training.png",
+    tag: "06 Mar"
+  },
+  {
+    title: "CURSO FOTOGRAMETRÍA CON DRONES EN TEMUCO",
+    date: "14 de marzo de 2026",
+    slots: "3 Cupos Disponibles",
+    image: "/images/drone-training.png",
+    tag: "14 Mar"
+  },
+  {
+    title: "CURSO HABILITACIÓN VUELO NOCTURNO CON DRONES",
+    date: "6 de marzo de 2026",
+    slots: "2 Cupos Disponibles",
+    image: "/images/drone-training.png",
+    tag: "06 Mar"
+  }
+];
+---
+
+<PageLayout 
+  title="Cursos de Drones Certificados DGAC | HDRONES®" 
+  description="Explora nuestra oferta de cursos profesionales de drones. Obtén tu credencial DGAC, aprende a volar y especialízate con los mejores instructores."
+  lang={lang}
+  routeId="courses"
+>
+  <!-- Hero Section -->
+  <section class="bg-background-secondary py-16 md:py-24 border-b border-border">
+    <div class="container text-center">
+      <h1 class="font-display text-4xl md:text-5xl font-extrabold mb-6">Nuestros <span class="text-brand-600">Cursos</span></h1>
+      <p class="text-xl text-foreground-muted max-w-2xl mx-auto leading-relaxed">
+        Formación profesional con certificación oficial. Elige el curso que mejor se adapte a tus necesidades y comienza tu carrera en el mundo de los drones.
+      </p>
+    </div>
+  </section>
+
+  <!-- Courses Grid -->
+  <section class="py-20 bg-background">
+    <div class="container">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {courses.map((course) => (
+          <Card variant="outline" class="flex flex-col h-full overflow-hidden hover:shadow-xl transition-all duration-300 border-border/50 group">
+            <div class="relative aspect-square overflow-hidden">
+              <img 
+                src={course.image} 
+                alt={course.title} 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute top-0 left-0 bg-brand-600 text-white px-4 py-2 font-display font-bold text-center leading-tight">
+                <span class="block text-xl">{course.tag.split(' ')[0]}</span>
+                <span class="block text-xs uppercase">{course.tag.split(' ')[1]}</span>
+              </div>
+              {course.offer && (
+                <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-brand-600 px-3 py-1 rounded-full text-xs font-bold shadow-sm border border-brand-200">
+                  ¡Oferta!
+                </div>
+              )}
+            </div>
+            
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="font-display text-base font-bold mb-4 line-clamp-3 leading-tight text-foreground group-hover:text-brand-600 transition-colors uppercase">
+                {course.title}
+              </h3>
+              
+              <div class="mt-auto space-y-3">
+                <div class="flex items-center gap-2 text-xs text-foreground-muted">
+                  <Icon name="calendar" size="xs" class="text-brand-500" />
+                  <span>{course.date}</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs text-foreground-muted">
+                  <Icon name="users" size="xs" class="text-brand-500" />
+                  <span>{course.slots}</span>
+                </div>
+                
+                {/* Mockup transition stars */}
+                <div class="flex gap-0.5 text-yellow-400 mt-2">
+                  {[...Array(5)].map(() => (
+                    <Icon name="star" size="xs" />
+                  ))}
+                </div>
+
+                <div class="pt-4 mt-2 border-t border-border/50">
+                  <Button variant="primary" size="md" fullWidth class="rounded-lg shadow-sm">
+                    Ver Detalles
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Info Banner -->
+  <section class="py-16 bg-brand-600 text-white overflow-hidden relative">
+    <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+    <div class="container relative z-10 text-center">
+      <h2 class="text-3xl font-bold mb-6">¿Necesitas asesoría personalizada?</h2>
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Si no estás seguro de qué curso elegir o necesitas una capacitación a medida para tu empresa, nuestro equipo está listo para ayudarte.
+      </p>
+      <div class="flex justify-center gap-4">
+        <Button variant="outline" size="lg" href={getLocalizedPath('contact', lang)} class="bg-white text-brand-600 border-none hover:bg-brand-50">
+          Contáctanos ahora
+        </Button>
+      </div>
+    </div>
+  </section>
+</PageLayout>

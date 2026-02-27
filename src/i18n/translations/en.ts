@@ -18,6 +18,8 @@ export const en = {
     components: 'Components',
     docs: 'Docs',
     getStarted: 'Get Started',
+    consultancy: 'Consultancy',
+    courses: 'Courses',
   },
 
   // Common
@@ -152,9 +154,8 @@ export const en = {
     command: 'npm create velocity@latest',
   },
 
-  // Footer
   footer: {
-    copyright: '© {year} Velocity. All rights reserved.',
+    copyright: '© {year} {siteName}. All rights reserved.',
     madeWith: 'Made with',
     maintainedBy: 'Maintained by',
     links: {
@@ -162,6 +163,21 @@ export const en = {
       github: 'GitHub',
       twitter: 'Twitter',
       license: 'License',
+    },
+    quickLinks: {
+      title: 'Quick Links',
+      about: 'About Us',
+      courses: 'Drone Courses',
+      consultancy: 'Drone Consultancy',
+      blog: 'Drone Blog',
+      terms: 'Terms & Conditions',
+    },
+    contact: {
+      title: 'Contact',
+      address: 'Drone Training Center.',
+      phone: '+569 9467 7613',
+      email: 'info@academiadronchile.cl',
+      hours: 'Mon to Sat 09:00 to 18:00 hrs',
     },
   },
 
@@ -205,48 +221,60 @@ export const en = {
     },
   },
 
+  // Consultancy page
+  consultancy: {
+    meta: {
+      title: 'Drone Consultancy',
+      description: 'Professional drone services and certifications.',
+    },
+  },
+
   // Contact page
   contact: {
     meta: {
       title: 'Contact Us',
-      description: 'Get in touch with the Velocity team.',
-    },
-    hero: {
-      badge: 'Get in Touch',
-      title: "Let's",
-      titleHighlight: 'connect.',
-      description: 'Have a question, suggestion, or just want to say hello? We would love to hear from you.',
-    },
-    form: {
-      title: 'Send us a message',
-      name: 'Your Name',
-      namePlaceholder: 'John Doe',
-      email: 'Email Address',
-      emailPlaceholder: 'john@example.com',
-      subject: 'Subject',
-      subjectPlaceholder: 'How can we help?',
-      message: 'Message',
-      messagePlaceholder: 'Tell us more about your project or question...',
-      submit: 'Send Message',
-      sending: 'Sending...',
-      success: 'Message sent successfully! We will get back to you soon.',
-      error: 'Failed to send message. Please try again later.',
+      description: 'Get in touch with the HDRONES team.',
     },
     info: {
       title: 'Other ways to reach us',
       email: {
         label: 'Email',
-        value: 'hello@velocity.dev',
+        value: 'info@academiadronchile.cl',
       },
-      github: {
-        label: 'GitHub',
-        value: 'github.com/velocity',
+      phone: {
+        label: 'Phone',
+        value: '+569 9467 7613',
       },
-      twitter: {
-        label: 'Twitter',
-        value: '@velocity_dev',
+      center: {
+        label: 'Training Center',
+        value: 'Camino Los Corrales s/n, Parcelacion El Porvenir 21, Padre Hurtado, Región Metropolitana',
+      },
+      hours: {
+        label: 'Business Hours',
+        value: 'Mon to Sat 09:00 to 18:00 hrs',
       },
     },
+    sidebar: {
+      title: 'More than 9 years training in the use of DRONES in CHILE',
+      subtitle: 'We provide drones at no cost. DGAC certified courses',
+      description: 'HDRONES® Aerial Training Company specialized in drones, we are leaders in training RPAS operators in the industry.',
+      highlights: [
+        'Safety and confidence in drone flight',
+        'Training in the use of drones',
+        'Theory and knowledge in drones'
+      ]
+    },
+    form: {
+      title: 'Write to us',
+      name: 'Full Name*',
+      email: 'Email*',
+      phone: 'Phone*',
+      region: 'Region*',
+      course: 'Select the course of your interest',
+      message: 'Your Message*',
+      captcha: 'I am not a robot',
+      submit: 'Send',
+    }
   },
 
   // Forms
@@ -471,6 +499,6 @@ export const en = {
     privacyPolicyLabel: 'Privacy Policy',
     alwaysOn: 'Always on',
   },
-} as const;
+};
 
 export type TranslationKeys = typeof en;

@@ -3,25 +3,26 @@ import PageLayout from '@/layouts/PageLayout.astro';
 ---
 
 <PageLayout
-  title="Page Not Found"
-  description="The page you're looking for doesn't exist."
+  title="Página no encontrada"
+  description="La página que estás buscando no existe."
   noindex={true}
+  lang="es"
 >
   <section class="py-24 md:py-32">
     <div class="container mx-auto px-4 text-center">
-      <p class="text-7xl font-bold text-primary">404</p>
+      <p class="text-7xl font-bold text-brand-600">404</p>
       <h1 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-        Page not found
+        Página no encontrada
       </h1>
       <p class="mt-4 text-muted-foreground">
-        Sorry, we couldn't find the page you're looking for.
+        Lo sentimos, no pudimos encontrar la página que buscas.
       </p>
       <div class="mt-8">
         <a
           href="/"
-          class="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
+          class="inline-flex items-center justify-center rounded-md bg-brand-600 px-6 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-brand-700"
         >
-          Go back home
+          Volver al inicio
         </a>
       </div>
     </div>

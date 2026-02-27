@@ -4,11 +4,11 @@ import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true;
+    return data.locale === 'es' && (import.meta.env.PROD ? data.draft !== true : true);
   });
 
   return posts.map((post) => ({
-    params: { slug: post.id },
+    params: { slug: post.id.replace('es/', '') },
     props: { post },
   }));
 }
